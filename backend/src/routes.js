@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = express.Router();
-const Sessioncontroller = require('./controllers/SessionController')
+const Sessioncontroller = require('./controllers/SessionController');
+const SpotController = require('./controllers/SpotController');
 
 routes.use(express.json());
 
@@ -12,5 +13,6 @@ routes.use(express.json());
 
 
 routes.post('/sessions',Sessioncontroller.store);
+routes.post('/spot',SpotController.store);
 
 module.exports = routes;
