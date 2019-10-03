@@ -11,6 +11,6 @@ routes.use(express.json());
 //req.body acessar corpo da edição
 
 
-routes.post('/users',Sessioncontroller.store);
+routes.post('/sessions',Sessioncontroller.store);
 
 module.exports = routes;
