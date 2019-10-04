@@ -12,11 +12,11 @@ module.exports = {
             return res.status(400).json({error: "User does not exist"});
         }
 
-        const Spot = await Spot.create({
+         const spot = await Spot.create({
             user: user_id,
             thumbnail: filename,
             company,
-            techs: techs.splits(',').map(tech => tech.trim()),
+            techs: techs.split(',').map(tech => tech.trim()),
             price
         })
 
