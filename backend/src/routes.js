@@ -1,10 +1,12 @@
 const express = require('express');
-const routes = express.Router();
+const multer = require('multer');
+const uploadConfig = require('./config/upload');
 const Sessioncontroller = require('./controllers/SessionController');
 const SpotController = require('./controllers/SpotController');
 
+const routes = express.Router();
 routes.use(express.json());
-
+const upload = multer(uploadConfig);
 
 //get: filtros
 //post: cria /edita 
@@ -13,6 +15,6 @@ routes.use(express.json());
 
 
 routes.post('/sessions',Sessioncontroller.store);
-routes.post('/spot',SpotController.store);
+routes.post('/spot', upload.single('thumbnail'),SpotController.store);
 
 module.exports = routes;
