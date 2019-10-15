@@ -3,6 +3,8 @@ const multer = require('multer');
 const uploadConfig = require('./config/upload');
 const Sessioncontroller = require('./controllers/SessionController');
 const SpotController = require('./controllers/SpotController');
+const DashboardController = require('./controllers/DashboardController');
+const BookingController = require('./controllers/BookingController');
 
 const routes = express.Router();
 routes.use(express.json());
@@ -16,5 +18,7 @@ const upload = multer(uploadConfig);
 
 routes.post('/sessions',Sessioncontroller.store);
 routes.post('/spot', upload.single('thumbnail'),SpotController.store);
-
+routes.get('/spot', SpotController.index);
+routes.get('/dashboard', DashboardController.show);
+routes.post('/spots/:spot_id/bookings', BookingController.store);
 module.exports = routes;
